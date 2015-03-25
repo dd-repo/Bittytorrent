@@ -52,7 +52,7 @@ $smarty->addPluginsDir($path.'/libs/plugins/');
 $smarty->template_dir = $path.'/themes/'.$conf['theme'].'/';
 $smarty->compile_dir = $path.'/libs/cache/compile_tpl/';
 $smarty->cache_dir = $path.'/libs/cache/';
-$smarty->debugging = true;
+$smarty->debugging = false;
 //$smarty->caching = $conf['timecache'];
 $smarty->caching = false;
 $smarty->force_compile = false ;
