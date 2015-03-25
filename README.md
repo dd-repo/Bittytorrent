@@ -4,7 +4,7 @@
 * * *
 
 *   [What is BitTorrent?](#what-is-bittorrent "What is BitTorrent?")
-*   [What is Bittytorrent?](#what-is-bittytorrent "What is Bittytorrent?")
+*   [What is BittyTorrent?](#what-is-bittytorrent "What is Bittytorrent?")
 *   [How to install Bittytorrent?](#how-to-install-bittytorrent "How to install Bittytorrent?")
 *   [Demonstration](#demonstration "Demonstration")
 *   [Script used](#script-used "Script used")
@@ -16,7 +16,7 @@ BitTorrent is file sharing software. You need four things to have BitTorrent wor
 
 The clients use the torrent file to connect to the tracker, this allows the client to find other peers to get the file from. This is the simplest explanation
 
-### What is BitTorrent? ###
+### What is BittyTorrent? ###
 
 Bittytorrent is a bittorrent tracker, this is a script that allows you to deploy a website for sharing torrents.  
 Its bittorrent php tracker. 
