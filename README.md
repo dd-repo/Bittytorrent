@@ -1,11 +1,11 @@
-![Hook](http://bittytorrent.com/wp-content/uploads/2014/11/bittytorrent.jpg) Bittytorrent
+![Bittytorrent](http://bittytorrent.com/wp-content/uploads/2014/11/bittytorrent.jpg) Bittytorrent
 =============
 
 * * *
 
 *   [What is BitTorrent?](#what-is-bitTorrents "What is BitTorrent?")
 *   [What is Bittytorrent?](#what-is-bittytorrent "What is Bittytorrent?")
-*   [How to install BitTorrent?](#how-to-install-bitTorrent "How to install BitTorrent?")
+*   [How to install Bittytorrent?](#how-to-install-bittytorrent "How to install Bittytorrent?")
 *   [Demonstration](#demonstration "Demonstration")
 *   [Script used](#script-used "Script used")
 
@@ -21,7 +21,7 @@ The clients use the torrent file to connect to the tracker, this allows the clie
 Bittytorrent is a bittorrent tracker, this is a script that allows you to deploy a website for sharing torrents.  
 Its bittorrent php tracker. 
 
-### How to install BitTorrent? ###
+### How to install Bittytorrent? ###
 
 To install php-pastebin, you do not need much!  
 
