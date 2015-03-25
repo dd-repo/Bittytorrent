@@ -1,14 +1,9 @@
 <?php
+//error_reporting(E_ALL);
 session_start(); 
 $path = dirname(__FILE__);
-$domain = $_SERVER['SERVER_NAME'];
-/* if (filesize($path."/libs/db.php") != 0) {
-	header("location:index.php");		
-}  */
-
-?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+$domain = $_SERVER['SERVER_NAME']; 
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,9 +16,7 @@ $domain = $_SERVER['SERVER_NAME'];
 <div id="header">
 <a href="install.php"> <h1>Bittytorrent </h1></a>
 </div>
-<br /><br />
-<?php
-
+<br /><br /><?php
 if (empty($_GET["step"])) {
 	if (empty($_GET["update"])) {
 		echo "<div class='section_box'>Welcome to the installation of Bittytorrent.<br />
@@ -171,8 +164,7 @@ echo "</form>\n";
          {
          $fd = fopen($path."/libs/db.php", "w+");
          $foutput = "<?php\n";
-         $foutput.= "// Generate the ".date("j F, Y, h:i:s")."\n";
-         $foutput.= "// For Bittytorrent\n";
+         $foutput.= "// Generate For Bittytorrent\n";
          $foutput.= "\$dbhost = \"".$_POST["hostname"]."\";\n";
          $foutput.= "\$dbuser = \"".$_POST["username"]."\";\n";
          $foutput.= "\$dbpass = \"".$_POST["password"]."\";\n";
@@ -184,13 +176,15 @@ echo "</form>\n";
          }
          // var_dump($path);
      // require($path.'/libs/startup.php');
-require($path.'/libs/db.php');
- 
+	 require($path.'/libs/db.php'); 
 	 executeQueryFile($dbuser,$dbpass,$dbname,$dbhost);
 
         // Install OK :)
-$_SESSION['step_two'] = 'ok';
- redirect("install.php?step=3");
+		$_SESSION['step_two'] = 'ok';
+		echo '<a href="install.php?step=3" class="button">Next step!!</a>';
+// header("Location: install.php?step=3");
+// exit(header("Location: install.php?step=3"));
+// redirect("install.php?step=3");
        }
 }
 
@@ -211,7 +205,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'update') {
 	 
 				
 					$_SESSION['step_tree'] = 'ok';
-					redirect("install.php?step=4");	
+					echo '<a href="install.php?step=4" class="button">Next step!!</a>';	
 				} else 
 					echo '<b>session Salt</b> can not be empty!';	
 			} else 
@@ -277,7 +271,7 @@ else {
 							$startUp->addUser($_POST['username'],$_POST['mail'],$_POST['pass'],'NULL','NULL','TRUE');				
 				
 							$_SESSION['step_four'] = 'ok';
-							redirect("install.php?step=5");	
+							echo '<a href="install.php?step=5" class="button">Next step!!</a>';	
 
 						} else 
 							echo 'Mail can not be empty!';	
