@@ -34,20 +34,26 @@ if (empty($_GET["step"])) {
 		";
 	}
 }
+
+
+function executeQueryFile($dbuser,$dbpass,$dbname,$dbhost) {
+global $path;
+$mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
  
-function executeQueryFile($filesql) {
-$query = file_get_contents($filesql);
-$array = explode(";\n", $query);
-$b = true;
-for ($i=0; $i < count($array) ; $i++) {
-$str = $array[$i];
-if ($str != '') {
-$str .= ';';
-$b &= mysql_query($str);	
-}	
-}	
-return $b;
+if (mysqli_connect_error()) {
+    die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
+} 
+$sql = file_get_contents($path."/libs/db.sql");
+if (!$sql){
+	die ('Error opening file');
 }
+ 
+mysqli_multi_query($mysqli,$sql);
+$mysqli->close();
+} 
+
+ 
  
  
 function is__writable($path) {
@@ -177,8 +183,10 @@ echo "</form>\n";
          fclose($fd);
          }
          // var_dump($path);
-     require($path.'/libs/startup.php');
-	 executeQueryFile($path."/libs/db.sql");
+     // require($path.'/libs/startup.php');
+require($path.'/libs/db.php');
+ 
+	 executeQueryFile($dbuser,$dbpass,$dbname,$dbhost);
 
         // Install OK :)
 $_SESSION['step_two'] = 'ok';
