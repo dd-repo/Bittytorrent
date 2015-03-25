@@ -3,7 +3,7 @@
 
 * * *
 
-*   [What is BitTorrent?](#what-is-bitTorrents "What is BitTorrent?")
+*   [What is BitTorrent?](#what-is-bitTorrent "What is BitTorrent?")
 *   [What is Bittytorrent?](#what-is-bittytorrent "What is Bittytorrent?")
 *   [How to install Bittytorrent?](#how-to-install-bittytorrent "How to install Bittytorrent?")
 *   [Demonstration](#demonstration "Demonstration")
@@ -39,7 +39,7 @@ Once the installation is complete, you must delete the install.php file, libs/db
 [Demonstration](http://demo.bittytorrent.com/ "Demonstration")
 
  
-### Demonstration ###
+### Script used ###
 
 Script used for the creation of Bittytorrent:
 
