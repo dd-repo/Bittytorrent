@@ -3,7 +3,7 @@
 
 * * *
 
-*   [What is BitTorrent?](#what-is-bitTorrent "What is BitTorrent?")
+*   [What is BitTorrent?](#what-is-bittorrent "What is BitTorrent?")
 *   [What is Bittytorrent?](#what-is-bittytorrent "What is Bittytorrent?")
 *   [How to install Bittytorrent?](#how-to-install-bittytorrent "How to install Bittytorrent?")
 *   [Demonstration](#demonstration "Demonstration")
