@@ -31,7 +31,7 @@ along with Bittytorrent.  If not, see <http://www.gnu.org/licenses/>.
 if (!defined("IN_TORRENT")) die("Access denied!");
 
 if (isset($_GET['cat']))
-	$where = "WHERE c.url_strip = '".$_GET['cat']."' ORDER BY date DESC LIMIT 20 ";
+	$where = "WHERE c.url_strip = '".$db->escape($_GET['cat'])."' ORDER BY date DESC LIMIT 20 ";
 else
 	$where = " ORDER BY date DESC LIMIT 20 ";
 	
