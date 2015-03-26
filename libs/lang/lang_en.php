@@ -78,8 +78,6 @@ $lang["errorIsuploaded"]="There was an error uploading your files (is_uploaded_f
 $lang["errorPrivate"]="This is private tracker! Use only this announce"; 
 $lang["notTorrent"]="This file is not a torrent file!! Upload .torrent file"; 
 $lang["welldone"]="Well done! Your torrent file is upload"; 
-$lang["UtUpload"]="Upload"; 
-
 $lang["ttUpdate"]="Torrent update,";
 $lang["seeUTorrent"]="see your torrent";
 $lang["now"]="now";
@@ -105,7 +103,6 @@ $lang["firstPage"]="First page";
 $lang["previousPage"]="Previous page"; 
 $lang["nextPage"]="Next page"; 
 $lang["lastPage"]="Last page"; 
-$lang["UtUpload"]=""; 
 
 /*
 Torrent detail
