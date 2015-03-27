@@ -127,10 +127,17 @@ switch (isset($_GET["page"])?$_GET["page"]:""){
                 $smarty->display('error.html');
         break; 
  
-        default:
-        case '':  
-                # index
-                include 'pages/main.php';
-                $smarty->display('index.html');
-        break;
+		case '':
+				# index
+				include 'pages/main.php';
+				$smarty->display('index.html');
+		break;
+		
+		default:
+				if ($hook->hook_exist('new_page'))
+					$hook->execute_hook('new_page');
+				else
+					$startUp->redirect($conf['baseurl'].'/');
+		break;        
+        
 }  
