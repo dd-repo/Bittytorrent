@@ -112,14 +112,6 @@ $('[data-toggle="modal"]').click(function(e) {
 	 }
 });
  
-
-$('#retourCommits').html('<img src="../../themes/asset/img/ajax-bar.gif">'); 
-		$.get( "/admincp/gitcommit/",{ gitMain: 'true' }, function( data ) {
-                $('#retourCommits').hide();                 
-				$("#hideContent").html(data);
-				$('#hideContent').fadeIn(); 
-}); 
-
 $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) { event.preventDefault(); $(this).ekkoLightbox(); }); 
 
     $(window).bind("load", function() {
