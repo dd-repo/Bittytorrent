@@ -464,7 +464,7 @@ public function remove_addCss($id) {
 # Add page
 ###################
     public function add_page( $plugin_name, $strip ) {
-                global $smarty,$path,$db,$startUp;
+                global $smarty,$path,$startUp,$hook;
                 $get_page = (isset($_GET["page"])?$_GET["page"]:"");
                 $pagesdir = dirname(__FILE__).'/../plugins/'.$plugin_name.'/php/';
                 $files = glob($pagesdir.'*.php');
@@ -482,7 +482,7 @@ public function remove_addCss($id) {
 # Add admin page
 ###################
     function add_admin_page( $plugin_name, $strip ) {
-                global $smarty,$path,$db,$startUp;
+                global $smarty,$path,$db,$startUp,$hook;
                 $get_page = (isset($_GET["act"])?$_GET["act"]:"");
                 $pagesdir = dirname(__FILE__).'/../plugins/'.$plugin_name.'/php/admin/';
                 $files = glob($pagesdir.'*.php');
