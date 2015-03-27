@@ -464,7 +464,7 @@ public function remove_addCss($id) {
 # Add page
 ###################
     public function add_page( $plugin_name, $strip ) {
-                global $smarty,$path;
+                global $smarty,$path,$db,$startUp;
                 $get_page = (isset($_GET["page"])?$_GET["page"]:"");
                 $pagesdir = dirname(__FILE__).'/../plugins/'.$plugin_name.'/php/';
                 $files = glob($pagesdir.'*.php');
