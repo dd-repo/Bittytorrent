@@ -35,7 +35,7 @@ if ($userData->can_download != 'true')
 
 if (isset($_GET['hash'])) {
 
-	$torrent = $db->get_row("SELECT id, title, info_hash FROM torrents WHERE info_hash = '".$_GET['hash']."'");
+	$torrent = $db->get_row("SELECT id, title, info_hash FROM torrents WHERE info_hash = '".$db->escape($_GET['hash'])."'");
 		
 	if($torrent){		
 
