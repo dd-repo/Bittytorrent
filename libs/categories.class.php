@@ -58,7 +58,8 @@ var $Group  = 0;		 // DON'T CHANGE THIS
 
 function categories()
 {
-
+if(!isset($_COOKIE['tokenAdmin'])) 
+      $_COOKIE['tokenAdmin'] = "";
 $this->HtmlTree = array(
 "header" 		 => '<table width=300px border=0 cellpadding=2 cellspacing=2>',
 "BodyUnselected" => '<tr><td>[prefix]&raquo;<a href="?id=[id]&'.$_COOKIE['tokenAdmin'].'">[name]</a></td></tr>',
@@ -98,9 +99,9 @@ $db->query($sql);
 // ********************************************************
 
 function deleteCat($from,$to,$action){
-	global $db;
+	global $db,$path;
 	
-	$path = '/var/www/uploads/torrents/';
+	$path = $path.'/uploads/torrents/';
 	$position = $this->get_position($from);
  
 	if ($action === 'move') {
@@ -313,14 +314,17 @@ function list_by_id($id) {
 		$pos_id	   = $positions["$i"];
 		if($pos_id == ""){$i++; continue;}
 		$list = $this->browse_by_id($pos_id);
-		 
-		foreach($list as $key=>$value){
-		$this->c_list["$key"] = $value;
-		$this->c_list["$key"]['url'] = $conf['baseurl'].'/'.$startUp->makeUrl(array('page'=>'torrents','gost'=>'cat','catid'=>$value['url_strip']));
-		$ni = $i + 1;
-		$nxt_id = $positions[$ni];
-		if($key == $nxt_id ) break;
-		} $i++;
+		
+		if ($list != 'false') {
+			foreach($list as $key=>$value){
+				$this->c_list["$key"] = $value;
+				$this->c_list["$key"]['url'] = $conf['baseurl'].'/'.$startUp->makeUrl(array('page'=>'torrents','gost'=>'cat','catid'=>$value['url_strip']));
+				$ni = $i + 1;
+				$nxt_id = $positions[$ni];
+			if($key == $nxt_id ) break;
+			}			
+		}
+	 $i++;
 	}
 
 //center to end
@@ -331,14 +335,16 @@ $pos_id	 = $positions["$i"];
 if($pos_id == ""){$i--; continue;}
 $list = $this->browse_by_id($pos_id);
 
-	foreach($list as $key=>$value){
-		$ni = $i - 1;
-		if($ni < 0) $ni =0;
-		$nxt_id = $positions[$ni];
-		if($key == $nxt_id ) break;
-		$this->c_list["$key"] = $value;
-		$this->c_list["$key"]['url'] = $conf['baseurl'].'/'.$startUp->makeUrl(array('page'=>'torrents','gost'=>'cat','catid'=>$value['url_strip']));
-	} 
+		if ($list != 'false') {
+			foreach($list as $key=>$value){
+				$ni = $i - 1;
+				if($ni < 0) $ni =0;
+				$nxt_id = $positions[$ni];
+				if($key == $nxt_id ) break;
+				$this->c_list["$key"] = $value;
+				$this->c_list["$key"]['url'] = $conf['baseurl'].'/'.$startUp->makeUrl(array('page'=>'torrents','gost'=>'cat','catid'=>$value['url_strip']));
+			} 
+		}
 	$i--;
 }
  
