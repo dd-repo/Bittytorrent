@@ -31,7 +31,7 @@ if (!defined("IN_TORRENT")) die("Access denied!");
  
 if (isset($_GET['info_hash'])) {
 
-	$torrent = $db->get_row("SELECT id, announce, info_hash FROM torrents WHERE info_hash = '".$_GET['info_hash']."'");
+	$torrent = $db->get_row("SELECT id, announce, info_hash FROM torrents WHERE info_hash = '".$db->escape($_GET['info_hash'])."'");
 
 	if($torrent){		
 		$returnError = "";
@@ -56,7 +56,7 @@ if (isset($_GET['info_hash'])) {
 
 
 		// Traitements
-		$NewTorrentvalue = $db->get_row("SELECT id, seeds, leechers, finished, last_scrape FROM torrents WHERE info_hash = '".$torrent->info_hash."'");
+		$NewTorrentvalue = $db->get_row("SELECT id, seeds, leechers, finished, last_scrape FROM torrents WHERE info_hash = '".$db->escape($torrent->info_hash)."'");
 		$retour = array(
 			'chaine'    => $NewTorrentvalue,
 			'lastScrape'      => date('j F Y H:i:s', $NewTorrentvalue->last_scrape),
