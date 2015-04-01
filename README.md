@@ -23,7 +23,7 @@ Its bittorrent php tracker.
 
 ### How to install Bittytorrent? ###
 
-To install php-pastebin, you do not need much!  
+To install Bittytorrent, you do not need much!  
 
 1.  Web server  
 2.  Mysql database  
