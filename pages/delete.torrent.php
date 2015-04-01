@@ -38,12 +38,12 @@ $smarty->assign('notAuth',false);
 
 if ($userData->delete_torrents != 'false') {        
 	if (isset($_GET['id']) && strlen($_GET['hash']) == '40') {
-		$torrentData = $db->get_row("SELECT id, userid, info_hash FROM torrents WHERE id = '".$db->escapes($_GET['id'])."'");
+		$torrentData = $db->get_row("SELECT id, userid, info_hash FROM torrents WHERE id = '".$db->escape($_GET['id'])."'");
 		if ($torrentData) {
 			// Check if torrent belongs to the user OR if user is admin for delete torrent
 			if ($userData->delete_torrents != 'false' || $userData->admin_access === 'true') {
 				if ($torrentData->userid === $startUp->uid || $userData->admin_access === 'true') {
-					$db->get_row("DELETE FROM torrents WHERE id = '".$torrentData->id."'");	
+					$db->get_row("DELETE FROM torrents WHERE id = '".$db->escape($torrentData->id)."'");	
 					$smarty->assign('torrentDelete',true);				
 				} else
 					$smarty->assign('thisisNotYourtorrent',true);
