@@ -652,12 +652,7 @@ class StartUp {
 			$src = 'data: '.mime_content_type($image).';base64,'.$imageData;
 		return $src;
 	}
-	###	
-	function addFooter(){
-		# code...
-		$c = "Php-Pastebin V.".$this->version." Rev: ".$this->rev." By: <a href=\"http://atmoner.com\" target=\"_blank\">Atmoner</a>";
-	return $c;
-	}
+
 	###	
 	function Fuckxss($var) {
 			strip_tags($var);
@@ -740,7 +735,7 @@ class Bittytorrent extends startUp {
 			$username = $this->session_username;
 			$password = $this->session_password;
 
-			$query = "SELECT id FROM ".$this->prefix_db."users WHERE name = '$username' AND pass = '$password' AND id = '$uid' AND level > '0' LIMIT 1;";
+			$query = "SELECT id FROM ".$this->prefix_db."users WHERE name = '".$db->escape($username)."' AND pass = '".$db->escape($password)."' AND id = '".$db->escape($uid)."' AND level > '0' LIMIT 1;";
 			$user = $db->get_row($query); 				
 			
 			 
@@ -759,7 +754,7 @@ class Bittytorrent extends startUp {
 		if($this->checkCookie()){
 				if ($this->checkUser()) {
 					$uid = $this->uid;
-					$query = "SELECT id FROM ".$this->prefix_db."users WHERE id = '$uid' AND level = '6' LIMIT 1;";
+					$query = "SELECT id FROM ".$this->prefix_db."users WHERE id = '".$db->escape($uid)."' AND level = '6' LIMIT 1;";
 					$user = $db->get_row($query); 
 		 
 						 if ($user->id)  
@@ -775,7 +770,7 @@ class Bittytorrent extends startUp {
 	function checkCredentials($username, $password){	
 		global $db; 
 		$password = $this->obscure($password);				
-		$query = "SELECT id FROM ".$this->prefix_db."users WHERE name = '$username' AND pass = '$password' AND level > '0' LIMIT 1;";
+		$query = "SELECT id FROM ".$this->prefix_db."users WHERE name = '".$db->escape($username)."' AND pass = '".$db->escape($password)."' AND level > '0' LIMIT 1;";
     	$user = $db->get_row($query); 
     		
 		if ($user) {
