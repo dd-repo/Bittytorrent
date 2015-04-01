@@ -199,7 +199,7 @@ class StartUp {
 	function editTorrent($id,$title,$url_title,$desc,$cat,$image){
 		global $db;
 		if (!empty($image))
-			$imageUpdate = ", images64='".$db->escape($image)."'";
+			$imageUpdate = ", imgExt='".$db->escape($image)."'";
 		else
 			$imageUpdate = "";
 			

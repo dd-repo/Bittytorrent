@@ -50,10 +50,22 @@ if (isset($_POST['updateTorrent'])) {
 			if (!empty($_POST['torrentDesc'])){
 				if (!empty($_POST['categories'])){
 					// Check if image existe
-					if (!empty($_FILES['image']["tmp_name"])) {
-						$imagesConvert = $startUp->img_base64($_FILES['image']['tmp_name']);
-					} else
-						$imagesConvert = "";
+  						
+						if (!empty($_FILES['image']['name'])) {
+						
+							$detailTorrent = $db->get_row("SELECT info_hash FROM torrents WHERE id ='".$db->escape($tId)."'");
+							$valid_ext = array( '.jpg' , '.jpeg' , '.gif' , '.png' );
+							$ext = strrchr($_FILES['image']['name'], '.'); 
+					 
+							if (in_array($ext,$valid_ext)) {
+								if(!move_uploaded_file($_FILES['image']['tmp_name'], $path.'/uploads/images/'.$detailTorrent->info_hash.$ext))
+									$smarty->assign('errorUploadimg',true);
+								else
+									$smarty->assign('errorUploadimg',false);		
+							} else
+								 $smarty->assign('imgNotAutorised',true);
+						} else
+							$ext = '';	
  
 					$startUp->editTorrent(
 								$_POST['torrentId'],
@@ -61,7 +73,7 @@ if (isset($_POST['updateTorrent'])) {
 								$_POST['torrentUrlTitle'],
 								$_POST['torrentDesc'],
 								$_POST['categories'],
-								$imagesConvert
+								$ext
 					);	
 					$smarty->assign('succesUpdateTorrent','Torrent update');
 					$smarty->assign('errorUpdateTorrent','false');
@@ -80,8 +92,8 @@ if (isset($_POST['updateTorrent'])) {
 }
 
 
-		 // Categories list part
- foreach ($startUp->Categories('getlist',0) as $obj) {
+// Categories list part
+foreach ($startUp->Categories('getlist',0) as $obj) {
  
 	$array[$obj['id']]['id'] = $obj['id'];
 	$array[$obj['id']]['prefix'] = $obj['prefix'];
@@ -96,7 +108,7 @@ if (isset($_POST['updateTorrent'])) {
 	 }
 }    
 
-		$smarty->assign('getAllCat',$array);   
+$smarty->assign('getAllCat',$array);   
 
 
 $getDetail = $startUp->getTorrent($tId);
