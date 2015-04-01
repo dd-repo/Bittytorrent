@@ -46,11 +46,6 @@ $hook->set_title('title_account', 'My account');
 $hook->add_block('infoUser', '', '','450-left',10); 
 
 $startUp->isLoggedAcount(); 
- 
-if (isset($_GET['delPaste']) && is_numeric($_GET['delPaste'])) {
-	$startUp->deleteMypaste($_GET['delPaste']);
-} 
-
 $getUserdata = $startUp->getMydata();
 
 
