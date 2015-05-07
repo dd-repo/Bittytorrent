@@ -127,10 +127,6 @@ $smarty->assign('hooks',$hook); // !! do not remove....
 
 
 
-if ($hook->hook_exist('action'))
-$hook->execute_hook('action');
-
-
 // Lang menu hook
 $hook->addMenuLang('en',$lang["english"], '?strLangue=en', 'en.png', '3'); 
 $hook->addMenuLang('fr',$lang["french"], '?strLangue=fr', 'fr.png', '4');
@@ -165,8 +161,9 @@ $hook->addCss('bootstrap','bootstrap.css','themes/'.$conf['theme'].'/css/','2');
 $hook->addCss('bootstrapTheme','bootstrap-theme.css','themes/'.$conf['theme'].'/css/','3');
 $hook->addCss('select2','select2.css','themes/asset/css/','4');
 $hook->addCss('Bselect2','select2-bootstrap.css','themes/asset/css/','5');
- 
 
+if ($hook->hook_exist('action'))
+	$hook->execute_hook('action');
 
 
 
